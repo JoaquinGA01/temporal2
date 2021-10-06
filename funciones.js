@@ -16,3 +16,4 @@ function calc() {
 function del() { 
     setResult(0);
 }
+
