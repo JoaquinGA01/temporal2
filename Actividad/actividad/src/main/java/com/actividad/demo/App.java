@@ -39,9 +39,24 @@ public class App
         usuarios.add("Jesus");
         usuarios.add("Kevin");
 
-        System.out.println( "Hello World!" );
-
         post("/HolaJson", (rq, rs)->{
+
+            String request = rq.body();
+            System.out.println("Request: " + request );
+            String msj = null;
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(request); //parse( request );
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            Object nombre =  peticion.get("usuario") ;
+            // if (rq.queryParams("nombre").equals("root"))
+            // msj = "Bienvenido!";
+            // else
+            // msj = "Usuario equivocado";
+            return "Hola post " + nombre + " " + "<a href='//127.0.0.1:5500/Actividad/actividad/index.html'> regresar </a>";
+
+            
+            /*System.out.println( "Hello World!" );
             String request = rq.body();
             JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request);
@@ -52,21 +67,18 @@ public class App
                 msj = "Bienvenido!";
             else
                 msj = "Usuario equivocado";
-            return "Hola post " + nombre + " " + "<a href='//127.0.0.1:5500/formulario.html'>regresar</a>";
+            return "Hola post " + nombre + " " + "<a href='//127.0.0.1:5500/formulario.html'>regresar</a>";*/
         });
 
 
         get("/hola", (rq , rs)->{
             String usuario=rq.queryParams("usuario");
             System.out.println(
-                "Requestssss: " + rq.queryParams("usuario") + " " + rq.queryParams("pass") + 
-                usuario + 
-                usuarios.size()
+                "Requestssss: " + rq.queryParams("usuario") + " " + rq.queryParams("pass")
             );
 
             String mensaje = "Usuario no Registrado <a href='//127.0.0.1:5500/Actividad/actividad/index.html'> regresar </a>'";
             for(int i=0; i<usuarios.size();i++){
-                System.out.println(usuarios.get(i));
                 if(rq.queryParams("usuario").equals(usuarios.get(i))){
                     mensaje = MostrarUsuarios(usuarios);
                     break;
@@ -77,12 +89,12 @@ public class App
 
         get("/holaa", (rq , rs)->{
             System.out.println(
-                "Request: " + rq.queryParams("usuario") + " " + rq.queryParams("pass")
+                "Request: " + rq.queryParams("usuario") + " " + rq.queryParams("pass") + " " + rq.queryParams("pass2")
             );
             String usuario=rq.queryParams("usuario");
             usuarios.add(usuario);
 
-            if(!rq.queryParams("contraseña2").equals(null)){
+            if(!rq.queryParams("contraseña2").equals(rq.queryParams("contraseña3"))){
                 String mensaje = MostrarUsuarios(usuarios);
                 return mensaje;
             }else{
