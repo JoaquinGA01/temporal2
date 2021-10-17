@@ -15,6 +15,7 @@ public class App
 {
     public static void main( String[] args )
     {
+        Usuario user = new Usuario("Joaquin", "otrela.2817@gmail.com", "123456");
         options("/*", (request, response) -> {
 
             String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");

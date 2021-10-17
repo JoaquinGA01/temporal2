@@ -7,7 +7,7 @@ btnPost.addEventListener("click", function(){
     params.append("pass", pass);
     console.log("------")
     console.log("{" + "usuario:'" + params.get("usuario") + "'," + "pass:'" + params.get("pass") + "'}");
-    axios.post("http://localhost:4567/HolaJson", { "usuario": params.get("usuario"), "pass": params.get("pass") } )
+    axios.post("http://localhost:4567/HolaJson", { usuario : params.get("usuario"), pass : params.get("pass") } )
     .then(
         function (rs) {
             console.log(rs.data);
