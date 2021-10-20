@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+</head>
+
+<body>
+    <h1>Hola <span th:text="${Nombre}">Mundo</span></h1>
+    <table border="1" >
+        <tr>
+            <td>ID</td>
+            <td>Nombre</td>
+            <td>Contraseña</td>
+        </tr>
+        <tr th:each="usuarios : ${Lista}">
+            <td th:text="${usuarios.id}">null</td>
+            <td th:text="${usuarios.Nombre}">null</td>
+            <td th:text="${usuarios.pass}">null</td>
+        </tr>
+
+    </table>
+
+    <a href="http://127.0.0.1:5500/thymeleaf/thymeleaf/Login.html">Inicio</a> 
+        <a href="http://127.0.0.1:5500/thymeleaf/thymeleaf/Registro.html">Registrar</a> 
+</body>
+
+</html>

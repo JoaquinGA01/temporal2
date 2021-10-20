@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Inicio</title>
+</head>
+
+<body>
+    <form action="http://localhost:8080/validacion" method="get">
+        <h1>Inicio de Sesion</h1>
+        <input type="text", placeholder="Usuario", id="txtUsuario", name="nombre">
+        <input type="password", placeholder="Password", id="txtpassword", name="pass"> <br>
+        <input type="submit" value="Inicio" id="btnInicio">
+        <a href="http://127.0.0.1:5500/thymeleaf/thymeleaf/Registro.html"><input type="button" value="Registrar" id="btnInicio"> </a>
+    </form>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</html>
