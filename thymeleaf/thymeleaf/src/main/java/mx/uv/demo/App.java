@@ -78,6 +78,20 @@ public class App
             String user = rq.queryParams("user");
             String pass = rq.queryParams("pass");
             String pass2 = rq.queryParams("pass2");
+            if(user.equals("")){
+                variables.put("Error", "Agrega un Nombre de Usuario");
+                IContext context = new Context(rq.raw().getLocale(), variables);
+                String out = ThymeleafUtil.getTemplateEngine().process("Errores", context);
+                return out;
+            }
+            for(Usuarios usu : usuarios){
+                if(user.equals(usu.getNombre())){
+                    variables.put("Error", "Este Usuario ya Existe");
+                    IContext context = new Context(rq.raw().getLocale(), variables);
+                    String out = ThymeleafUtil.getTemplateEngine().process("Errores", context);
+                    return out;
+                }
+            }
             if(pass.equals("")||pass.equals("")){
                 
                 variables.put("Error", "Rellena Todos los Campos");
