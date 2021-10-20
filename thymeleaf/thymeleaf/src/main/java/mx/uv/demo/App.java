@@ -55,6 +55,8 @@ public class App
                 if(usu.getNombre().equals(user)){
                     if(usu.getPass().equals(pass)){
                         variables.put("Nombre", user);
+                        variables.put("User", user);
+                        variables.put("Usuario", user);
                         variables.put("Lista", usuarios);                        
                         IContext context = new Context(rq.raw().getLocale(), variables);
                         String out = ThymeleafUtil.getTemplateEngine().process("Tabla", context);

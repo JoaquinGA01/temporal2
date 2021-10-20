@@ -10,6 +10,10 @@
 
 <body>
     <h1>Hola <span th:text="${Nombre}">Mundo</span></h1>
+    <!--<div th:switch="${Usuario}">
+        <p th:case="'Joaquin'"> Usuario Administrador</p>
+    </div>-->
+    <div th:if="${User == 'Joaquin'}" th:text="Usuario Administrador"></div>
     <table border="1" >
         <tr>
             <td>ID</td>
