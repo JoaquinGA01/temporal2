@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello World</title>
+
+    <style>
+        h1 {color:blue; font-size:30px; text-align: center;} 
+        h3 {color:darkblue; font-size:15px; text-align: center}
+        table {text-align: center; background-color: antiquewhite; margin: 0 auto;}
+        a {text-align: center;}
+        p {text-align: center;}
+    </style>
 </head>
 
 <body>
@@ -13,8 +21,8 @@
     <!--<div th:switch="${Usuario}">
         <p th:case="'Joaquin'"> Usuario Administrador</p>
     </div>-->
-    <div th:if="${User == 'Joaquin'}" th:text="Usuario Administrador"></div>
-    <table border="1" >
+    <h3>Usuario<div><span th:if="${User == 'Joaquin'}" th:text="Administrador"> Normal </span> </div></h3>
+    <table border="1">
         <tr>
             <td>ID</td>
             <td>Nombre</td>
@@ -27,9 +35,10 @@
         </tr>
 
     </table>
-
-    <a href="http://127.0.0.1:5500/thymeleaf/thymeleaf/Login.html">Inicio</a> 
-        <a href="http://127.0.0.1:5500/thymeleaf/thymeleaf/Registro.html">Registrar</a> 
+    <br>
+    
+    <p> <a href="http://127.0.0.1:5500/thymeleaf/thymeleaf/Login.html"><input type="button" value="Inicio"></a>
+    <a href="http://127.0.0.1:5500/thymeleaf/thymeleaf/Registro.html"><input type="button" value="Registrar"></a> </p>
 </body>
 
 </html>
