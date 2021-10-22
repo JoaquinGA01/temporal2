@@ -31,16 +31,19 @@ public class App
             Map<String, Object> variables = new HashMap<>();
             variables.put("today", new Date());
             IContext context = new Context(rq.raw().getLocale(), variables);
-            String out = ThymeleafUtil.getTemplateEngine().process("home", context);
+            String out = ThymeleafUtil.getTemplateEngine(null).process("home", context);
             return out;
         });
 
         get("/hola", (req,rs)->{
-            Map<String, Object> variables = new HashMap<>();
+            
+            rs.redirect("/resources/Login.html");
+            return null;
+            /*Map<String, Object> variables = new HashMap<>();
             variables.put("Lista", usuarios);
             IContext context = new Context(req.raw().getLocale(), variables);
-            String out = ThymeleafUtil.getTemplateEngine().process("Tabla", context);
-            return out;
+            String out = ThymeleafUtil.getTemplateEngine("Hola").process("Login", context);
+            return out;*/
         });
 
         get("/validacion", (rq,rs)->{
@@ -58,19 +61,19 @@ public class App
                         variables.put("User", user);
                         variables.put("Lista", usuarios);                        
                         IContext context = new Context(rq.raw().getLocale(), variables);
-                        String out = ThymeleafUtil.getTemplateEngine().process("Tabla", context);
+                        String out = ThymeleafUtil.getTemplateEngine("Hola").process("Tabla", context);
                         return out;
                     }else{
                         variables.put("Error", "Contraseña Diferente");
                         IContext context = new Context(rq.raw().getLocale(), variables);
-                        String out = ThymeleafUtil.getTemplateEngine().process("Errores", context);
+                        String out = ThymeleafUtil.getTemplateEngine("Hola").process("Errores", context);
                         return out;
                     }
                 }
             }
             variables.put("Error", "Usuario Inexistente");
             IContext context = new Context(rq.raw().getLocale(), variables);
-            String out = ThymeleafUtil.getTemplateEngine().process("Errores", context);
+            String out = ThymeleafUtil.getTemplateEngine("Hola").process("Errores", context);
             return out;    
         });
 
@@ -82,14 +85,14 @@ public class App
             if(user.equals("")){
                 variables.put("Error", "Agrega un Nombre de Usuario");
                 IContext context = new Context(rq.raw().getLocale(), variables);
-                String out = ThymeleafUtil.getTemplateEngine().process("Errores", context);
+                String out = ThymeleafUtil.getTemplateEngine("Hola").process("Errores", context);
                 return out;
             }
             for(Usuarios usu : usuarios){
                 if(user.equals(usu.getNombre())){
                     variables.put("Error", "Este Usuario ya Existe");
                     IContext context = new Context(rq.raw().getLocale(), variables);
-                    String out = ThymeleafUtil.getTemplateEngine().process("Errores", context);
+                    String out = ThymeleafUtil.getTemplateEngine("Hola").process("Errores", context);
                     return out;
                 }
             }
@@ -97,7 +100,7 @@ public class App
                 
                 variables.put("Error", "Rellena Todos los Campos");
                 IContext context = new Context(rq.raw().getLocale(), variables);
-                String out = ThymeleafUtil.getTemplateEngine().process("Errores", context);
+                String out = ThymeleafUtil.getTemplateEngine("Hola").process("Errores", context);
                 return out;
             }
             if(pass.equals(pass2)){
@@ -105,12 +108,12 @@ public class App
                 variables.put("Nombre", user);
                 variables.put("Lista", usuarios);                        
                 IContext context = new Context(rq.raw().getLocale(), variables);
-                String out = ThymeleafUtil.getTemplateEngine().process("Tabla", context);
+                String out = ThymeleafUtil.getTemplateEngine("Hola").process("Tabla", context);
                 return out;
             }else{
                 variables.put("Error", "Contraseña Diferente");
                 IContext context = new Context(rq.raw().getLocale(), variables);
-                String out = ThymeleafUtil.getTemplateEngine().process("Errores", context);
+                String out = ThymeleafUtil.getTemplateEngine("Hola").process("Errores", context);
                 return out;
             }
         });
