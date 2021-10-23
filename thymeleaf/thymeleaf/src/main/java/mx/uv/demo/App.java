@@ -20,14 +20,15 @@ public class App
 {
     public static void main( String[] args )
     {
-        List<Usuarios> usuarios = new ArrayList<Usuarios>();
-        port(8080);
+        port(getHerokuAssignedPort());
         staticFiles.location("/");
+        List<Usuarios> usuarios = new ArrayList<Usuarios>();
+        usuarios.add(new Usuarios(1L,"Pedro","AInEk1020"));
+        usuarios.add(new Usuarios(1L,"Joaquin","Kenia25"));
+        usuarios.add(new Usuarios(1L,"Carol","Carol52"));
+        usuarios.add(new Usuarios(1L,"Jahir","AInEk14"));
         get("/",(rq, rs)->{
-            usuarios.add(new Usuarios(1L,"Pedro","AInEk1020"));
-            usuarios.add(new Usuarios(1L,"Joaquin","Kenia25"));
-            usuarios.add(new Usuarios(1L,"Carol","Carol52"));
-            usuarios.add(new Usuarios(1L,"Jahir","AInEk14"));
+            
             Map<String, Object> variables = new HashMap<>();
             variables.put("today", new Date());
             IContext context = new Context(rq.raw().getLocale(), variables);
@@ -37,7 +38,7 @@ public class App
 
         get("/hola", (req,rs)->{
             
-            rs.redirect("/Login.html");
+            rs.redirect("/index.html");
             return null;
             /*Map<String, Object> variables = new HashMap<>();
             variables.put("Lista", usuarios);
@@ -117,5 +118,12 @@ public class App
                 return out;
             }
         });
+    }
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 }
