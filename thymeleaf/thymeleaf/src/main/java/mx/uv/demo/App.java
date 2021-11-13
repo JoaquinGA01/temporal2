@@ -20,7 +20,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        port(getHerokuAssignedPort());
+        port(1000);
         staticFiles.location("/");
         List<Usuarios> usuarios = new ArrayList<Usuarios>();
         usuarios.add(new Usuarios(1L,"Pedro","AInEk1020"));

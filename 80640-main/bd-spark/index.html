@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form  action="">
+        <input type="text" name="" id="email" placeholder="email">
+        <input type="password" name="" id="password" placeholder="password">
+        <button type="button" id="btnRegistrar">Registrar</button>
+        <button type="button" id="btnLista">Lista</button>
+        <button type="button" id="btnBorrar">Borrar</button>
+        <button type="button" id="btnModific">Modificar</button>
+    </form>
+    <span>
+        <ul id="usuarios"></ul>
+    </span>
+    <form id="Acciones"action="">
+        <input type="text" name="txtID" id="txtID" placeholder="Email" disabled ">
+        <button type="button" id="prueba" disabled="true" >Borrar Usuario</button>
+        <br>
+        <br>
+    </form>
+
+    <form id="Modificar" action="">
+        <input type="text" name="txtNombre" id="txtNombre" placeholder="Nombre" disabled >
+        <input type="text" name="txtNombrenew" id="txtNombrenew" placeholder="Nombre Nuevo" disabled >
+        <input type="password" name="txtPass" id="txtPass" placeholder="Pass" disabled>
+        <input type="password" name="txtPass2" id="txtPass2" placeholder="Repit Pass" disabled>
+        <button type="button" id="modificar" disabled="true"  >Modificar Usuario</button>
+    </form>
+    
+    <!-- disabled style="visibility: hidden;"-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
